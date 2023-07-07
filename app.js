@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import globalErrorHandler from "./controllers/errorController.js";
-import MovieRouter from "./routes/movieRoutes.js";
+import { default as MovieRouter, default as Review } from "./routes/movieRoutes.js";
 import UserRoute from "./routes/userRoutes.js";
 import AppError from "./utils/appError.js";
 mongoose.set("strictQuery", true);
@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/movie", MovieRouter);
 app.use("/api/v1/user", UserRoute);
+app.use("/api/v1/review", Review);
 
 // Error Handler
 app.all("*", (req, res, next) => {
