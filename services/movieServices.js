@@ -1,9 +1,5 @@
 import Movie from "../models/moviesModel.js";
 
-const getMovieService = async () => {
-  const movies = await Movie.find()
-  return movies;
-};
 
 const createMovieService = async (data) => {
   const movie = await Movie.create(data);
@@ -11,6 +7,17 @@ const createMovieService = async (data) => {
   return movie;
 };
 
+const getMovieService = async () => {
+  const movies = await Movie.find()
+  return movies;
+};
 
-export { createMovieService, getMovieService };
+const getSingleMovieService = async (movieId) => {
+  console.log('movieId', movieId);
+  const movies = await Movie.findById(movieId)
+  return movies;
+};
+
+
+export { createMovieService, getMovieService, getSingleMovieService };
 

@@ -18,7 +18,7 @@ export default async (req, res, next) => {
       })
     }
 
-    const decoded = await promisify(Jwt.verify)(token, process.env.JWT_SECRET);
+    const decoded = await promisify(Jwt.verify)(token, 'e4454');
     req.user = decoded;
     // const User = User.findOne({email:decoded.email})
     next();

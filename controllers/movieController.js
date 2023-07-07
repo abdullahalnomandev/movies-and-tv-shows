@@ -1,4 +1,4 @@
-import { createMovieService, getMovieService } from "../services/movieServices.js";
+import { createMovieService, getMovieService, getSingleMovieService } from "../services/movieServices.js";
 import AppError from "../utils/appError.js";
 
 const getAllMovies = async (req, res, next) => {
@@ -27,6 +27,19 @@ const createMovies = async (req, res, next) => {
   }
 };
 
+const getSingleMovies = async (req, res, next) => {
+  try {
+    const product = await getSingleMovieService(req.params.id);
+    res.status(200).json({
+      status: "success",
+      data: product
+    });
+  } catch (error) {
+    next(new AppError(error, 404));
+  }
+};
 
-export { createMovies, getAllMovies };
+
+
+export { createMovies, getAllMovies, getSingleMovies };
 

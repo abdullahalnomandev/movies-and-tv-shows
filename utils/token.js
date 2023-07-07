@@ -7,11 +7,11 @@ const generateToken = (userInfo) => {
         role: userInfo.role
     }
 
-    const token = Jwt.sign(payload, process.env.JWT_SECRET, {
-        expiresIn: "7days"
+    const token = Jwt.sign(payload, 'e4454', {
+        expiresIn: "90days"
     })
     return token;
 }
 
-export { generateToken };
+export default generateToken
 
